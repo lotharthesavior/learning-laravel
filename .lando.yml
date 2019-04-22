@@ -1,0 +1,7 @@
+name: learning-laravel
+recipe: laravel
+config:
+  database: mysql
+  via: apache
+  php: 7.3
+  webroot: ./app/public

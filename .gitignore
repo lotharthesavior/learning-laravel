@@ -1,0 +1,7 @@
+app/vendor
+app/.env
+app/yarn.lock
+app/composer.lock
+app/node_modules
+app/package-lock.json
+.idea
