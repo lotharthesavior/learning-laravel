@@ -57,14 +57,18 @@ class GoogleOAuthController extends Controller
      */
     private function persistTribeUser(SocialiteUser $user)
     {
-        $userModel = User::updateOrCreate(
-            ['email' => $user->email],
-            [
-                'name' => $user->name,
-                'email' => $user->email,
-                'password' => 'fh287gr8ybfow8fufihriuwhfoahv9hdis'
-            ]
-        );
+        $userModel = User::where('email', $user->email)->first();
+        $userData = [
+            'name' => $user->name,
+            'email' => $user->email,
+        ];
+
+        if (!$userModel) {
+            $userData['password'] = 'fh287gr8ybfow8fufihriuwhfoahv9hdis';
+            $userModel = User::create($userData);
+        } else {
+            $userModel->update($userData);
+        }
 
         UserMeta::updateOrCreate(
             [
