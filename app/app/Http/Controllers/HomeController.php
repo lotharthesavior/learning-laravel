@@ -32,7 +32,7 @@ class HomeController extends Controller
         })->value);
 
         return view('home', [
-            'userAvatar' => $tribeAccountMeta->avatar
+            'userAvatar' => $tribeAccountMeta->avatar ?? ''
         ]);
     }
 }
